@@ -21,8 +21,13 @@ Al aplicar el Deployment, Kubernetes crea el pod. Antes de guardarlo, el API ser
 
 ### 4. CRDs instalados por Dapr
 
-> _Tu respuesta aquí_
+En mi clúster aparecieron 7. Los más importantes:
+
+- components: define qué tecnología concreta usa cada capacidad, por ejemplo Redis para pub/sub.
+- subscriptions: permite suscribirse a tópicos desde un YAML, sin escribirlo en el código.
+- resiliencies: configura reintentos, timeouts y circuit breakers sin tocar la aplicación.
+- configurations: ajustes generales del runtime, como trazas, mTLS y métricas.
 
 ### 5. Relación entre `components.dapr.io` y el concepto de Building Block
 
-> _Tu respuesta aquí_
+El Building Block es la abstracción, por ejemplo “publicar un mensaje”. El Component es la implementación concreta: dice que ese pub/sub, llamado order-pubsub, por debajo es Redis y se conecta a tal dirección. La app solo conoce el nombre lógico. Si mañana se cambia Redis por Kafka, solo cambia el Component y el código sigue igual.
